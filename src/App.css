@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+
+.main-div {
+  text-align: center;
+  margin: 2rem auto;
+
+  width: 50%;
+}
+
+.text-1-div {
+  margin: 1rem 0;
+}
+
+.text-2-div {
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.text-2-div .text-area {
+  width: 18.5rem;
+}
+
+.text-3-div {
+  margin: 0 0 1rem 0;
+  font-size: 14px;
+  color: red;
+}
+
+.text-4-div {
+  margin: 0 0 1rem 0;
+  font-size: 14px;
+}
+
+.btn-div {
+  border: 1px solid;
+  width: fit-content;
+  /* display: flex; */
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  background-color: antiquewhite;
+}
+
+.first-Page {
+  border: 1px solid;
+  /* width: fit-content; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+  margin: 1rem auto;
+  border-radius: 5rem;
+  padding: 1rem;
+}
