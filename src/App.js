@@ -67,6 +67,12 @@ function App() {
     }
   }, [formErr]);
 
+  const AllowNumbersOnly = (e) => {
+    if ((e.which != 8 && e.which != 0 && e.which < 48) || e.which > 57) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <>
       <div className="main-div">
@@ -99,6 +105,7 @@ function App() {
                 placeholder="Details"
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
+                maxlength="250"
               ></textarea>
             </div>
             {formErr.details ? (
@@ -125,7 +132,8 @@ function App() {
             Enter your Contact Number
             <div className="text-2-div">
               <input
-                type="number"
+                type="text"
+                maxLength="10"
                 id="typeNumber"
                 class="form-control"
                 className="text-area"
@@ -133,6 +141,7 @@ function App() {
                 placeholder="12345678"
                 value={number}
                 onChange={(e) => setNumber(e.target.value)}
+                onKeyPress={AllowNumbersOnly}
               />
             </div>
             {formErr.number ? (
@@ -141,14 +150,16 @@ function App() {
               <div className="text-4-div"></div>
             )}
             <div className="btn-div" onClick={btnDiv}>
-              Submit
+              Submit{" "}
             </div>
           </div>
         )}
         {firstPage && (
           <div className="first-Page">
             <div>Name: {name}</div>
-            <div>Details: {details}</div>
+            <div>
+              Details: <span>{details}</span>
+            </div>
             <div>Email: {email}</div>
             <div>Contact Number: {number}</div>
           </div>
