@@ -1,97 +1,77 @@
-.App {
-  text-align: center;
+.container-fluid {
+  background-color: #f8f8f8;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 0.5rem 2rem;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.main-div {
-  text-align: center;
-  margin: 2rem auto;
-
-  width: 50%;
-}
-
-.text-1-div {
-  margin: 1rem 0;
-}
-
-.text-2-div {
-  margin: 0.5rem 0 0 0;
+.left {
   display: flex;
-  gap: 5rem;
-  justify-content: center;
+  gap: 2rem;
 }
 
-.text-2-div .text-area {
-  width: 18.5rem;
+.logo {
+  padding-top: 1rem;
 }
 
-.text-3-div {
-  margin: 0 0 1rem 0;
-  font-size: 14px;
-  color: red;
+.business-developement {
+  padding-top: 1rem;
 }
 
-.text-4-div {
-  margin: 0 0 1rem 0;
-  font-size: 14px;
+.clinical {
+  padding-top: 1rem;
 }
 
-.btn-div {
-  border: 1px solid;
-  width: fit-content;
-  /* display: flex; */
-  text-align: center;
-  margin: 2rem auto;
-  padding: 1rem 2rem;
-  border-radius: 5rem;
-  font-size: 16px;
-  font-weight: 800;
-  cursor: pointer;
-  background-color: antiquewhite;
+.admin {
+  padding-top: 1rem;
 }
 
-.first-Page {
-  border: 1px solid;
-  /* width: fit-content; */
+.graph-kpi {
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 50%;
-  margin: 1rem auto;
-  border-radius: 5rem;
+}
+
+.kpi-cards {
+  box-shadow: 5px 5px 3px lightgrey;
+  height: 5rem;
+  width: 10rem;
+  text-align: center;
   padding: 1rem;
+  background-color: #f8f8f8;
+}
+
+.accordian-cards {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.main-kpi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 3rem 3rem;
+}
+
+.accordian-val {
+  display: flex;
+  flex-direction: column;
+}
+
+.acc-name {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.acc-val {
+  font-size: 14px;
+  text-align: center;
+}
+
+.main-acc {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
 }

@@ -1,172 +1,202 @@
+import React, { useEffect } from "react";
 import "./App.css";
-import React from "react";
+import Plotly from "plotly.js-dist";
+import Plot from "react-plotly.js";
+import * as d3 from "d3";
+import Accordion from "react-bootstrap/Accordion";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/styles//ag-grid.css";
+import "ag-grid-community/styles//ag-theme-alpine.css";
 import { useState } from "react";
-import { useEffect } from "react";
-
 function App() {
-  const initialValues = {
-    name: "",
-    details: "",
-    email: "",
-    number: "",
-  };
-  const [name, setName] = useState("");
-  const [details, setDetails] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [submitBtn, setSubmitBtn] = useState(true);
-  const [firstPage, setFirstPage] = useState(false);
-  const [formErr, setFormErr] = useState({});
-  const [formValues, setFormValues] = useState(initialValues);
-  const [isSubmit, setIsSubmit] = useState(false);
-  const validRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const [data, setdata] = useState([
+    {
+      type: "sunburst",
+      ids: [
+        "Arun",
+        "Rahul",
+        "Suman",
+        "Arun - English",
+        "Arun - Bengali",
+        "Rahul - Hindi",
+        "Rahul - Odia",
+        "Suman - Bengali",
+        "Suman - Math",
+      ],
+      labels: [
+        "Arun",
+        "Rahul",
+        "Suman",
+        "English",
+        "Bengali",
+        "Hindi",
+        "Odia",
+        "Bengali",
+        "Math",
+      ],
+      parents: ["", "", "", "Arun", "Arun", "Rahul", "Rahul", "Suman", "Suman"],
+      outsidetextfont: { size: 20, color: "#377eb8" },
+      // leaf: {opacity: 0.4},
+      marker: { line: { width: 2 } },
+    },
+  ]);
 
+  var layout = {
+    margin: { l: 0, r: 0, b: 0, t: 0 },
+    sunburstcolorway: ["#636efa", "#ef553b", "#00cc96"],
+  };
+  const [rowData, setRowData] = useState([]);
+  const [columnDefs, setColumnDefs] = useState([
+    { headerName: "Name", field: "name" },
+    { headerName: "subject", field: "subject" },
+    { headerName: "class", field: "class" },
+    { headerName: "marks", field: "marks" },
+    { headerName: "school", field: "school" },
+    { headerName: "id", field: "id" },
+  ]);
+  const [newVal, setNewVal] = useState("");
+  const newData = [
+    {
+      name: "Arun",
+      subject: "English",
+      class: "8th",
+      marks: 90,
+      school: "J.K. Mullen High School",
+      id: "0",
+    },
+    {
+      name: "Arun",
+      subject: "Bengali",
+      class: "8th",
+      marks: 90,
+      school: "J.K. Mullen High School",
+      id: "0",
+    },
+    {
+      name: "Rahul",
+      subject: "Hindi",
+      class: "5th",
+      marks: 75,
+      school: "Lynn Classical High School",
+      id: "1",
+    },
+    {
+      name: "Rahul",
+      subject: "Odia",
+      class: "5th",
+      marks: 75,
+      school: "Lynn Classical High School",
+      id: "1",
+    },
+    {
+      name: "Suman",
+      subject: "Bengali",
+      class: "9th",
+      marks: 82,
+      school: "South Anchorage HS",
+      id: "2",
+    },
+    {
+      name: "Suman",
+      subject: "Math",
+      class: "9th",
+      marks: 82,
+      school: "South Anchorage HS",
+      id: "2",
+    },
+  ];
   useEffect(() => {
-    setFormValues({
-      ...formValues,
-      name: name,
-      details: details,
-      email: email,
-      number: number,
-    });
-  }, [name, details, email, number]);
-  const btnDiv = () => {
-    console.log("ddddddd");
-    console.log(name, details, email, number);
-    console.log(formValues);
-    setFormErr(validate(formValues));
-    setIsSubmit(true);
-    debugger;
-  };
-  const validate = (values) => {
-    const errors = {};
-    if (!values.name) {
-      errors.msg = "Please add valid name field";
-      errors.name = "Yes";
-    }
-    if (!values.details) {
-      errors.msg = "Please add valid details";
-      errors.details = "Yes";
-    }
-    if (!values.number) {
-      errors.msg = "Please add valid email";
-      errors.number = "Yes";
-    }
-    if (!values.email.match(validRegex)) {
-      errors.msg = "Please add valid number field";
-      errors.email = "Yes";
-    }
-    return errors;
+    //static json data
+    setRowData(newData);
+  }, []);
+
+  const callingAnotherFunction = (id) => {
+    var abc = [];
+    // for (var i = 0; i < newData.length; i++) {
+    //   if (id === newData[i].name) {
+    //     abc.push(newData[i]);
+    //     console.log(abc);
+    //     setRowData(abc);
+    //   }
+    // }
   };
 
-  useEffect(() => {
-    if (Object.keys(formErr).length === 0 && isSubmit) {
-      setSubmitBtn(false);
-      setFirstPage(true);
-    }
-  }, [formErr]);
-
-  const AllowNumbersOnly = (e) => {
-    if ((e.which != 8 && e.which != 0 && e.which < 48) || e.which > 57) {
-      e.preventDefault();
+  const [cordClick, setCordClick] = useState("");
+  const newFnBtn = (event) => {
+    console.log(event.points[0]);
+    console.log(event.points[0].id);
+    callingAnotherFunction(event.points[0].id);
+    setCordClick(event.points[0].id);
+    //setNewVal(event.points[0].id);
+    var abc = [];
+    for (var i = 0; i < newData.length; i++) {
+      if (event.points[0].id === newData[i].name) {
+        abc.push(newData[i]);
+        console.log(abc);
+        setRowData(abc);
+        // setdata(abc);
+      }
+      if (cordClick === event.points[0].id) {
+        setRowData(newData);
+        setCordClick("");
+      }
     }
   };
 
   return (
     <>
-      <div className="main-div">
-        <div className="text-1-div">Contact Form</div>
-        {submitBtn && (
-          <div className="first-Page">
-            Enter your Name
-            <div className="text-2-div">
-              <input
-                type="text"
-                size={40}
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                placeholder="Animesh Mondal"
-                required
-              />
-            </div>
-            {formErr.name ? (
-              <div className="text-3-div">Please add valid name field</div>
-            ) : (
-              <div className="text-4-div"></div>
-            )}
-            Enter your Details
-            <div className="text-2-div">
-              <textarea
-                class="form-control"
-                className="text-area"
-                id="exampleFormControlTextarea1"
-                rows="3"
-                placeholder="Details"
-                value={details}
-                onChange={(e) => setDetails(e.target.value)}
-                maxlength="250"
-              ></textarea>
-            </div>
-            {formErr.details ? (
-              <div className="text-3-div">Please add valid details</div>
-            ) : (
-              <div className="text-4-div"></div>
-            )}
-            Enter your Email
-            <div className="text-2-div">
-              <input
-                type="text"
-                size={40}
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                placeholder="animesh@gmail.com"
-                required
-              />
-            </div>
-            {formErr.email ? (
-              <div className="text-3-div">Please add valid email</div>
-            ) : (
-              <div className="text-4-div"></div>
-            )}
-            Enter your Contact Number
-            <div className="text-2-div">
-              <input
-                type="text"
-                maxLength="10"
-                id="typeNumber"
-                class="form-control"
-                className="text-area"
-                required
-                placeholder="12345678"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-                onKeyPress={AllowNumbersOnly}
-              />
-            </div>
-            {formErr.number ? (
-              <div className="text-3-div">Please add valid number field</div>
-            ) : (
-              <div className="text-4-div"></div>
-            )}
-            <div className="btn-div" onClick={btnDiv}>
-              Submit{" "}
+      <div className="container-fluid">
+        <div className="header">
+          <div class="row">
+            <div className="left">
+              <div className="logo">Logo</div>
+              <div className="business-developement">Menu-1</div>
+              <div className="clinical">Menu-2</div>
+              <div className="admin">Menu-3</div>
             </div>
           </div>
-        )}
-        {firstPage && (
-          <div className="first-Page">
-            <div>Name: {name}</div>
-            <div>
-              Details: <span>{details}</span>
-            </div>
-            <div>Email: {email}</div>
-            <div>Contact Number: {number}</div>
+        </div>
+      </div>
+      <div class="graph-kpi">
+        <div class="col-6 col-md-6">
+          <div id="myDiv" style={{ margin: "3rem 0" }}>
+            <Plot data={data} layout={layout} onClick={newFnBtn}></Plot>
           </div>
-        )}
+        </div>
+        <div class="col-6 col-md-6">
+          <div class="main-kpi">
+            {rowData.map((value, index) => (
+              <div className="kpi-cards" key={index}>
+                <span>{value.subject}</span>{" "}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div
+        className="ag-theme-alpine"
+        style={{ height: "20rem", margin: "2rem 10rem" }}
+      >
+        <AgGridReact
+          columnDefs={columnDefs}
+          rowData={rowData}
+          pagination={true}
+          paginationPageSize={5}
+          overlayNoRowsTemplate={
+            '<span style="padding: 10px;">You currently have no data</span>'
+          }
+          defaultColDef={{
+            editable: true,
+            enableRowGroup: true,
+            enablePivot: true,
+            enableValue: true,
+            sortable: true,
+            resizable: true,
+          }}
+        ></AgGridReact>
       </div>
     </>
   );
 }
-
 export default App;
