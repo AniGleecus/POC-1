@@ -111,23 +111,10 @@ function App() {
     setRowData(newData);
   }, []);
 
-  const callingAnotherFunction = (id) => {
-    var abc = [];
-    // for (var i = 0; i < newData.length; i++) {
-    //   if (id === newData[i].name) {
-    //     abc.push(newData[i]);
-    //     console.log(abc);
-    //     setRowData(abc);
-    //   }
-    // }
-  };
-
   const [cordClick, setCordClick] = useState("");
   const newFnBtn = (event) => {
     console.log(event.points[0]);
     console.log(event.points[0].id);
-    callingAnotherFunction(event.points[0].id);
-    setCordClick(event.points[0].id);
     //setNewVal(event.points[0].id);
     var abc = [];
     for (var i = 0; i < newData.length; i++) {
@@ -135,12 +122,34 @@ function App() {
         abc.push(newData[i]);
         console.log(abc);
         setRowData(abc);
+        setCordClick(event.points[0].id);
         // setdata(abc);
       }
-      if (cordClick === event.points[0].id) {
-        setRowData(newData);
-        setCordClick("");
-      }
+    }
+    if (
+      cordClick &&
+      (event.points[0].id === "Arun" ||
+        event.points[0].id === "Rahul" ||
+        event.points[0].id === "Suman")
+    ) {
+      setRowData(newData);
+      setCordClick("");
+      debugger;
+    } else {
+      debugger;
+    }
+    if (
+      event.points[0].id ===
+      ("Arun - English" ||
+        "Arun - Bengali" ||
+        "Rahul - Hindi" ||
+        "Rahul - Odia" ||
+        "Suman - Bengali" ||
+        "Suman - Math")
+    ) {
+      debugger;
+    } else {
+      debugger;
     }
   };
 
@@ -158,7 +167,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div class="graph-kpi">
+      {/* <div class="graph-kpi">
         <div class="col-6 col-md-6">
           <div id="myDiv" style={{ margin: "3rem 0" }}>
             <Plot data={data} layout={layout} onClick={newFnBtn}></Plot>
@@ -171,6 +180,24 @@ function App() {
                 <span>{value.subject}</span>{" "}
               </div>
             ))}
+          </div>
+        </div>
+      </div> */}
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <div id="myDiv" style={{ margin: "3rem 0" }}>
+              <Plot data={data} layout={layout} onClick={newFnBtn}></Plot>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="main-kpi">
+              {rowData.map((value, index) => (
+                <div className="kpi-cards" key={index}>
+                  <span>{value.subject}</span>{" "}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
