@@ -8,7 +8,7 @@
 
 .left {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .logo {
@@ -119,4 +119,168 @@
   margin: 10rem auto;
   font-size: 4rem;
   font-weight: 800;
+}
+
+.homePage {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.homePage-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.option-list {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+}
+
+.pie-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.pie-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.ver-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.ver-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.hori-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.hori-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.donut-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.donut-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.sensex-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.sensex-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
+}
+
+.scatter-chart {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: white;
+  padding: 16px 3px;
+}
+
+.scatter-chart-after {
+  margin-top: 1rem;
+  cursor: pointer;
+  color: white;
+  border: 1px solid;
+  cursor: pointer;
+  background-color: black;
+  font-weight: 600;
+  padding: 16px 3px;
 }
