@@ -112,3 +112,11 @@
     transform: rotate(360deg);
   }
 }
+
+.No-404 {
+  display: flex;
+  justify-content: center;
+  margin: 10rem auto;
+  font-size: 4rem;
+  font-weight: 800;
+}
